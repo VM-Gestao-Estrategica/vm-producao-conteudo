@@ -1,0 +1,19 @@
+TERMOS DE USO E DIREITOS RESERVADOS
+
+Este software e todo o seu código fonte, design, textos e recursos visuais são de propriedade exclusiva da TOPSTACK.
+
+© 2026 TOPSTACK. TODOS OS DIREITOS RESERVADOS.
+
+1. PROPRIEDADE INTELECTUAL
+Todo o conteúdo deste projeto, incluindo mas não se limitando a marcas, logotipos, designs, códigos e bancos de dados, é protegido por leis de propriedade intelectual.
+
+2. RESTRIÇÕES DE USO
+Fica expressamente proibido:
+- Copiar, modificar ou distribuir o código fonte sem autorização prévia por escrito.
+- Realizar engenharia reversa do software.
+- Utilizar a marca SocialAI ou TOPSTACK para fins comerciais não autorizados.
+
+3. DESENVOLVEDOR
+Este projeto foi desenvolvido e é mantido pela TOPSTACK.
+
+Fale com a TOPSTACK para saber mais sobre nossas soluções de IA, automação e BI.
