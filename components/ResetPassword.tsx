@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Lock, Loader2, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Lock, Loader2, ShieldCheck, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import { authService } from '../services/authService';
 
 interface ResetPasswordProps {
@@ -10,6 +10,8 @@ interface ResetPasswordProps {
 const ResetPassword: React.FC<ResetPasswordProps> = ({ onSuccess }) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
@@ -78,28 +80,46 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onSuccess }) => {
                             <label className="text-[10px] font-bold text-slate-900 uppercase tracking-widest flex items-center gap-2 px-1">
                                 <Lock size={12} className="text-slate-900" /> Nova Senha
                             </label>
-                            <input
-                                type="password"
-                                required
-                                placeholder="••••••••"
-                                className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:ring-4 focus:ring-[#7ba1ee]/5 focus:border-[#7ba1ee] outline-none"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    required
+                                    placeholder="••••••••"
+                                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:ring-4 focus:ring-[#7ba1ee]/5 focus:border-[#7ba1ee] outline-none pr-12"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
                         </div>
 
                         <div className="space-y-2">
                             <label className="text-[10px] font-bold text-slate-900 uppercase tracking-widest flex items-center gap-2 px-1">
                                 <Lock size={12} className="text-slate-900" /> Confirmar Senha
                             </label>
-                            <input
-                                type="password"
-                                required
-                                placeholder="••••••••"
-                                className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:ring-4 focus:ring-[#7ba1ee]/5 focus:border-[#7ba1ee] outline-none"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    required
+                                    placeholder="••••••••"
+                                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:ring-4 focus:ring-[#7ba1ee]/5 focus:border-[#7ba1ee] outline-none pr-12"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                                >
+                                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
                         </div>
 
                         {error && (

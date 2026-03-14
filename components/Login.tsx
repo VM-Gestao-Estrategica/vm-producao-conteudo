@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Mail, Lock, LogIn, Loader2, Sparkles, ShieldCheck } from 'lucide-react';
+import { Mail, Lock, LogIn, Loader2, Sparkles, ShieldCheck, Eye, EyeOff } from 'lucide-react';
 import { authService } from '../services/authService';
 
 interface LoginProps {
@@ -11,6 +11,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     const [mode, setMode] = useState<'login' | 'forgot' | 'sent'>('login');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -57,14 +58,14 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     }
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-[#f8fafc] p-6 relative overflow-y-auto py-12">
+        <div className="min-h-screen w-full flex items-center justify-center bg-[#f8fafc] p-4 relative overflow-hidden">
             {/* Background Orbs */}
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#7ba1ee]/5 rounded-full blur-[120px] animate-pulse" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#4c6eb3]/5 rounded-full blur-[120px] animate-pulse" />
 
             <div className="w-full max-w-md relative z-10">
-                <div className="bg-white/70 backdrop-blur-2xl p-10 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,31,63,0.1)] border border-white/50">
-                    <div className="text-center space-y-4 mb-10">
+                <div className="bg-white/70 backdrop-blur-2xl p-8 rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,31,63,0.1)] border border-white/50">
+                    <div className="text-center space-y-3 mb-6">
                         <div className="inline-flex p-1 bg-white rounded-3xl shadow-xl shadow-slate-200/50 mb-2 overflow-hidden">
                             <img 
                                 src="apple-touch-icon.png" 
@@ -79,7 +80,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="space-y-2">
                             <label className="text-[10px] font-bold text-slate-900 uppercase tracking-widest flex items-center gap-2 px-1">
                                 <Mail size={12} className="text-slate-900" /> E-mail Profissional
@@ -112,13 +113,20 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                                 </div>
                                 <div className="relative group">
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         required
                                         placeholder="••••••••"
-                                        className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white/50 focus:bg-white focus:ring-4 focus:ring-[#7ba1ee]/5 focus:border-[#7ba1ee] outline-none text-slate-900 font-medium transition-all placeholder:text-slate-300"
+                                        className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white/50 focus:bg-white focus:ring-4 focus:ring-[#7ba1ee]/5 focus:border-[#7ba1ee] outline-none text-slate-900 font-medium transition-all placeholder:text-slate-300 pr-12"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                                    >
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
                                 </div>
                             </div>
                         )}
@@ -158,7 +166,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                         )}
                     </form>
 
-                    <div className="mt-12 text-center">
+                    <div className="mt-6 text-center">
                         <p className="text-[10px] text-slate-600 font-medium uppercase tracking-[0.1em]">
                             VM Gestão Estratégica &copy; 2026
                         </p>
