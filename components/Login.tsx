@@ -57,7 +57,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     }
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-[#f8fafc] p-6 relative overflow-hidden">
+        <div className="min-h-screen w-full flex items-center justify-center bg-[#f8fafc] p-6 relative overflow-y-auto py-12">
             {/* Background Orbs */}
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#7ba1ee]/5 rounded-full blur-[120px] animate-pulse" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#4c6eb3]/5 rounded-full blur-[120px] animate-pulse" />
@@ -69,14 +69,10 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                             <img 
                                 src="apple-touch-icon.png" 
                                 alt="VM Logo" 
-                                className="w-18 h-18 object-cover"
+                                className="w-16 h-16 object-cover"
                             />
                         </div>
-                        <div className="flex flex-col items-center -space-y-1">
-                            <h1 className="text-3xl font-black text-slate-900 tracking-tighter leading-none">
-                                VM Produção
-                            </h1>
-                            <span className="text-2xl font-bold opacity-80 text-slate-900">De conteúdo</span>
+                        <div className="flex flex-col items-center">
                             <p className="text-sm text-slate-600 font-bold uppercase tracking-[0.2em] mt-2">
                                 {mode === 'login' ? 'Acesso Restrito' : 'Recuperar Senha'}
                             </p>
